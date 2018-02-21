@@ -1,19 +1,20 @@
 var Airport = function(){
   this.hangar = [];
-  this.isStormy = function(){
+};
+
+Airport.prototype.isStormy = function(){
     var chance = Math.floor((Math.random() * 10) + 1);
     if (chance < 3) {
-      return true;
+        return true;
     } else {
-      return false;
+        return false;
     }
-  };
 };
 
 Airport.prototype.land = function(plane) {
   if (this.isStormy===true) {
     console.log("NO! NO LAND STORMY");
-  } else {this.hangar.push(plane);};
+  } else {this.hangar.push(plane);}
 };
 
 Airport.prototype.takeoff = function(plane) {
