@@ -45,4 +45,20 @@ describe ('Airport', function() {
     });
   });
 
+  describe ('When airport is full', function() {
+
+      var airport;
+      beforeEach(function() {
+          airport = new Airport();
+      });
+
+     it("doesn't allow plane to land", function() {
+      spyOn(Math, 'random').and.returnValue(5);
+      for (i = 1; i <= 5; i++) {
+          airport.land('plane');
+      }
+      expect(airport.hangar.length).toBe(5);
+      expect(function(){airport.land('loner plane');}).toThrow(new Error("Hangar is full"));
+     });
+  });
 });

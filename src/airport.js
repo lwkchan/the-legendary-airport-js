@@ -2,6 +2,8 @@ var Airport = function(){
   this.hangar = [];
 };
 
+const HANGAR_CAPACITY = 5;
+
 Airport.prototype.isStormy = function(){
     var chance = Math.floor((Math.random() * 10) + 1);
     if (chance < 3) {
@@ -17,6 +19,8 @@ Airport.prototype.isStormy = function(){
 Airport.prototype.land = function(plane) {
   if (this.isStormy()===true) {
     console.log("NO! NO LAND STORMY");
+  } else if (this.hangar >= HANGAR_CAPACITY){
+      throw new Error("Hangar is full");
   } else {
     console.log("Plane has landed");
     this.hangar.push(plane);
@@ -32,6 +36,7 @@ Airport.prototype.takeoff = function(plane) {
         console.log("NO! NO PLANE EXIST");
       } else {
         this.hangar.splice(index, 1);
+        console.log("Plane has taken off");
       }
     }
   };
