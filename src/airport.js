@@ -19,7 +19,7 @@ Airport.prototype.isStormy = function(){
 Airport.prototype.land = function(plane) {
   if (this.isStormy()===true) {
     console.log("NO! NO LAND STORMY");
-  } else if (this.hangar >= HANGAR_CAPACITY){
+  } else if (this.hangar.length === HANGAR_CAPACITY){
       throw new Error("Hangar is full");
   } else {
     console.log("Plane has landed");
